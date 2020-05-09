@@ -5,7 +5,9 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 784733298322.dkr.ecr.us-east-1.amazonaws.com
+      - pwd="$(aws ecr get-login  --region us-east-1 | awk '{print $6}')"
+      - sudo docker login -u AWS -p "$pwd" https://784733298322.dkr.ecr.us-east-1.amazonaws.com
+      #- aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 784733298322.dkr.ecr.us-east-1.amazonaws.com
       - REPOSITORY_URI=784733298322.dkr.ecr.us-east-1.amazonaws.com/myrepo
       - IMAGE_TAG=buildimage
   build:
