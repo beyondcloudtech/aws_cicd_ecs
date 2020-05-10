@@ -1,5 +1,5 @@
-FROM 784733298322.dkr.ecr.us-east-1.amazonaws.com/myrepo:alpine
-
+#FROM 784733298322.dkr.ecr.us-east-1.amazonaws.com/myrepo:alpine
+FROM alpine:latest
 # Create app directory
 WORKDIR /usr/src/api
 
